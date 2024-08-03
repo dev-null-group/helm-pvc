@@ -1,0 +1,8 @@
+namespace: dafault
+
+gid: 1000
+path: /mnt/
+
+storage:
+  capacity: 2Gi
+  request: 1Gi

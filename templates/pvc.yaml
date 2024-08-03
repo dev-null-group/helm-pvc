@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "{{ .Release.Name }}-data"
+  namespace: {{ .Values.namespace }}
+  annotations:
+    pv.beta.kubernetes.io/gid: "{{ .Values.gid }}"
+spec:
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  capacity:
+    storage: {{ .Values.storage.capacity }}
+  hostPath:
+    path: "{{ .Values.path }}{{ .Values.namespace }}"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "{{ .Release.Name }}-data-claim"
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: {{ .Values.storage.request }}
