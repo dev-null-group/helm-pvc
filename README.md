@@ -2,5 +2,5 @@
 
 Example run:
 ```sh
-helm install pvc-test --set namespace=test --set path=/home/pv/ .
+helm -n test install pvc --set namespace=test --set path=/opt/pvc/ .
 ```
